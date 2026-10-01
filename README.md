@@ -34,7 +34,7 @@ Since most questions don't need a flagship model, sending easier questions to th
 | Python 3.10+ | Language and runtime |
 | [`typer`](https://typer.tiangolo.com) | Command-line interface (`llmroute chat`, `llmroute models`) |
 | [`pyyaml`](https://pyyaml.org) | Parses `registry.yaml` (models, tiers, router settings) |
-| [`openai`](https://github.com/openai/openai-python) | Client for OpenAI and any OpenAI-compatible API (Gemini, DeepSeek, Qwen, MiMo, OpenRouter, Ollama) |
+| [`openai`](https://github.com/openai/openai-python) | Client for OpenAI and any OpenAI-compatible API (Gemini, DeepSeek, Qwen, Grok, etc) |
 | [`anthropic`](https://github.com/anthropics/anthropic-sdk-python) | Client for the Claude API |
 | [`laya`](https://brainfunctioncollapse.com/laya) | Local difficulty classifier that returns easy/medium/hard probabilities |
 | `torch`, `transformers` | Run the Laya model locally on CUDA, Apple MPS, or CPU |
