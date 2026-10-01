@@ -11,11 +11,11 @@ Since most questions don't need a flagship model, sending easier questions to th
                  │ P(easy), P(medium), P(hard)   │
                  └──────────────┬────────────────┘
                                 │ pick tier (low confidence → bump up one tier)
-                                ▼
+                                V
         ┌───────────┐     ┌───────────┐     ┌───────────┐
-        │   easy    │ ──▶ │  medium   │ ──▶ │   hard    │
-        │ qwen mimo │     │ gemini    │     │ claude    │
-        │           │     │ deepseek  │     │ chatgpt   │
+        │   easy    │ --> │   easy    │ --> │   hard    │
+        │   qwen    │     │  gemini   │     │  claude   │
+        │   grok    │     │ deepseek  │     │  chatgpt  │
         └───────────┘     └───────────┘     └───────────┘
             models in a tier take turns (round-robin)
       on error, try the next model, then the next tier up
@@ -34,7 +34,7 @@ Since most questions don't need a flagship model, sending easier questions to th
 | Python 3.10+ | Language and runtime |
 | [`typer`](https://typer.tiangolo.com) | Command-line interface |
 | [`pyyaml`](https://pyyaml.org) | Parses `registry.yaml` (models, tiers, router settings) |
-| [`openai`](https://github.com/openai/openai-python) | Client for OpenAI and any OpenAI-compatible API (Gemini, DeepSeek, Qwen, MiMo, OpenRouter, Ollama) |
+| [`openai`](https://github.com/openai/openai-python) | Client for OpenAI and any OpenAI-compatible API (Gemini, DeepSeek, Qwen, Grok, etc) |
 | [`anthropic`](https://github.com/anthropics/anthropic-sdk-python) | Client for the Claude API |
 | [`laya`](https://brainfunctioncollapse.com/laya) | Local difficulty classifier that returns easy/medium/hard probabilities |
 | `torch`, `transformers` | Run the Laya model locally on CUDA, Apple MPS, or CPU |
@@ -48,14 +48,11 @@ thonk/
 ├── cli.py                   # typer app: ask, chat, models, eval
 ├── router.py                # Laya wrapper: load once, warm up, classify
 ├── registry.yaml            # models, tiers, API settings, env var names
-├── providers/               # Claude, Chatgpt, Gemini, DeepSeek, Qwen, MiMo
+├── providers/               # Claude, Chatgpt, Gemini, DeepSeek, Qwen, Grok
 │   ├── base.py              # ask(prompt) -> response
-│   ├── anthropic.py   
-│   ├── openai.py
-│   ├── gemini.py   
-│   ├── deepseek.py
-│   ├── qwen.py   
-│   └── mimo.py            
+│   ├── anthropic.py 
+│   ├── gemini.py     
+│   └── openai_compat.py     # covers OpenAI style APIs (DeepSeek, Qwen, Grok)       
 ├── escalation.py            # retry and next-tier logic
 ├── engine.py                # routing, round-robin, escalation, logging
 ├── evalset/                 # labelled questions for testing the router
