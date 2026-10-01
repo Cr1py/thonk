@@ -21,15 +21,15 @@ Current Project (WIP): Simple and convenient cli that allows users to quickly as
  
 ```
 llmroute/
-├── cli.py            # typer app: ask, chat, models, eval
-├── router.py           # Laya wrapper: load once, warm up, classify
-├── registry.yaml       # models, tiers, API settings, env var names
+├── cli.py                   # typer app: ask, chat, models, eval
+├── router.py                # Laya wrapper: load once, warm up, classify
+├── registry.yaml            # models, tiers, API settings, env var names
 ├── providers/
-│   ├── base.py           # ask(prompt) -> Response
+│   ├── base.py              # ask(prompt) -> Response
 │   ├── anthropic.py    
-│   └── openai_compat.py  # covers OpenAI, DeepSeek, Qwen (OpenAI-style APIs)
-├── escalation.py       # retry and next-tier logic
-├── evalset/            # labelled questions for testing the router
-└── logs/               # route decisions, latency, cost 
+│   └── openai_compat.py     # covers OpenAI, DeepSeek, Qwen (OpenAI-style APIs)
+├── escalation.py            # retry and next-tier logic
+├── evalset/                 # labelled questions for testing the router
+└── logs/                    # route decisions, latency, cost 
 
 ```
