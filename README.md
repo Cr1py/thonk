@@ -11,11 +11,11 @@ Since most questions don't need a flagship model, sending easier questions to th
                  │ P(easy), P(medium), P(hard)   │
                  └──────────────┬────────────────┘
                                 │ pick tier (low confidence → bump up one tier)
-                                ▼
+                                V
         ┌───────────┐     ┌───────────┐     ┌───────────┐
-        │   easy    │ ──▶ │  medium   │ ──▶ │   hard    │
-        │ qwen mimo │     │ gemini    │     │ claude    │
-        │           │     │ deepseek  │     │ chatgpt   │
+        │   easy    │ --> │   easy    │ --> │   hard    │
+        │   qwen    │     │  gemini   │     │  claude   │
+        │   grok    │     │ deepseek  │     │  chatgpt  │
         └───────────┘     └───────────┘     └───────────┘
             models in a tier take turns (round-robin)
       on error, try the next model, then the next tier up
@@ -48,14 +48,11 @@ llmroute/
 ├── cli.py                   # typer app: ask, chat, models, eval
 ├── router.py                # Laya wrapper: load once, warm up, classify
 ├── registry.yaml            # models, tiers, API settings, env var names
-├── providers/               # Claude, Chatgpt, Gemini, DeepSeek, Qwen, MiMo
+├── providers/               # Claude, Chatgpt, Gemini, DeepSeek, Qwen, Grok
 │   ├── base.py              # ask(prompt) -> response
-│   ├── anthropic.py   
-│   ├── openai.py
-│   ├── gemini.py   
-│   ├── deepseek.py
-│   ├── qwen.py   
-│   └── mimo.py            
+│   ├── anthropic.py 
+│   ├── gemini.py     
+│   └── openai_compat.py     # covers OpenAI style APIs (DeepSeek, Qwen, Grok)       
 ├── escalation.py            # retry and next-tier logic
 ├── engine.py                # routing, round-robin, escalation, logging
 ├── evalset/                 # labelled questions for testing the router
