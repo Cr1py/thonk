@@ -1,5 +1,5 @@
 # thonk
-Current Project (WIP): Simple and convenient cli that allows users to quickly ask questions and sends each question to the LLM best suited for it. A local classifier (Laya) rates how hard your question is, and thonk forwards it to a model in the matching tier (cheap and fast models for easy questions, stronger ones for hard questions). If a model fails, the question moves up to the next tier automatically.
+Simple and convenient cli that allows users to quickly ask questions and sends each question to the LLM best suited for it. A local classifier (Laya) rates how hard your question is, and thonk forwards it to a model in the matching tier (cheap and fast models for easy questions, stronger ones for hard questions). If a model fails, the question moves up to the next tier automatically.
 
 Since most questions don't need a flagship model, sending easier questions to the most capable model is a waste of tokens and MONEY, so thonk is here to make sure I don't waste money.
 
