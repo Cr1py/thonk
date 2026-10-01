@@ -53,7 +53,6 @@ thonk/
 │   ├── anthropic.py 
 │   ├── gemini.py     
 │   └── openai_compat.py     # covers OpenAI style APIs (DeepSeek, Qwen, Grok)       
-├── escalation.py            # retry and next-tier logic
 ├── engine.py                # routing, round-robin, escalation, logging
 ├── evalset/                 # labelled questions for testing the router
 └── logs/                    # route decisions, latency, cost 
