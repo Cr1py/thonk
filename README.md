@@ -1,2 +1,2 @@
-# Stacks-on-Stacks
-Current Project (WIP): User writes a project idea, and 3 tech stacks are given as options
+# thonk
+Current Project (WIP): Simple and convenient cli that allows users to quickly ask questions and receive answers directly from the terminal.
