@@ -44,17 +44,24 @@ Since most questions don't need a flagship model, sending easier questions to th
 ## Project structure
  
 ```
-thonk/
-├── cli.py                   # typer app: ask, chat, models, eval
-├── router.py                # Laya wrapper: load once, warm up, classify
-├── registry.yaml            # models, tiers, API settings, env var names
-├── providers/               # Claude, Chatgpt, Gemini, DeepSeek, Qwen, Grok
-│   ├── base.py              # ask(prompt) -> response
-│   ├── anthropic.py 
-│   ├── gemini.py     
-│   └── openai_compat.py     # covers OpenAI style APIs (DeepSeek, Qwen, Grok)       
-├── engine.py                # routing, round-robin, escalation, logging
-├── evalset/                 # labelled questions for testing the router
-└── logs/                    # route decisions, latency, cost 
+
+thonk/ 
+├── pyproject.toml                        #
+├── registry.yaml                         # models, tiers, API settings, env var names
+├── README.md
+├── evalset/                              # labelled questions for testing the router
+├── logs/                                 # logs route decisions, latency, cost, errors 
+└── thonk/
+    ├── __init__.py                       # empty
+    ├── cli.py                            # typer app: ask, chat, models (builds the CLI) 
+    ├── config.py                         # models and loads config
+    ├── router.py                         # Laya wrapper: load once, warm up, classify
+    ├── engine.py                         # routing, round-robin, escalation, logging
+    └── providers/
+        ├── __init__.py
+        ├── base.py                       # ask(prompt) -> response
+        ├── anthropic_provider.py
+        └── openai_compat.py              # covers OpenAI style APIs (DeepSeek, Qwen, Grok) 
+
 
 ```
