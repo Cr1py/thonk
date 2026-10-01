@@ -44,7 +44,6 @@ Since most questions don't need a flagship model, sending easier questions to th
 ## Project structure
  
 ```
-
 thonk/ 
 ├── pyproject.toml                        #
 ├── registry.yaml                         # models, tiers, API settings, env var names
@@ -62,6 +61,4 @@ thonk/
         ├── base.py                       # ask(prompt) -> response
         ├── anthropic_provider.py
         └── openai_compat.py              # covers OpenAI style APIs (DeepSeek, Qwen, Grok) 
-
-
 ```
